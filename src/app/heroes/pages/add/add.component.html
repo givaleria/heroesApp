@@ -1,1 +1,90 @@
-<p>add works!</p>
+<h1> {{ (heroe.id) ? 'Edit' : 'New' }} Heroe - <small>{{heroe.superhero | titlecase}}</small> </h1>
+
+<div fxLayout="row"
+     fxLayoutGap="40px"
+     fxLayout.xs="column"
+     fxLayoutAlign="center">
+
+  <div fxFlex="50" fxLayout="column">
+
+    <div fxLayout="row" fxLayoutGap="20px">
+      <mat-form-field fxFlex="100" color="accent">
+        <mat-label>Superheroe</mat-label>
+          <input matInput
+                type="text"
+                [(ngModel)]="heroe.superhero"
+                required>
+      </mat-form-field>
+
+      <mat-form-field fxFlex="100" color="accent">
+        <mat-label>Alter Ego</mat-label>
+          <input matInput
+                type="text"
+                [(ngModel)]="heroe.alter_ego"
+                required>
+      </mat-form-field>
+    </div>
+
+    <mat-form-field color="accent">
+      <mat-label>First Appearance</mat-label>
+        <input matInput
+               type="text"
+               [(ngModel)]="heroe.first_appearance"
+               required>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>Characters</mat-label>
+        <input matInput
+               type="text"
+               [(ngModel)]="heroe.characters"
+               required>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>Publisher</mat-label>
+        <mat-select [(ngModel)]="heroe.publisher" required>
+          <mat-option *ngFor="let publisher of publishers"
+                      [value]="publisher.id">
+          {{publisher.desc}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field color="accent">
+      <mat-label>Image Url</mat-label>
+        <input matInput
+               type="url"
+               [(ngModel)]="heroe.alt_img"
+               required>
+    </mat-form-field>
+
+    <br>
+
+    <button mat-raised-button
+            color="accent"
+            (click)="save()">
+            <mat-icon>save</mat-icon>
+          {{ (heroe.id) ? 'Update' : 'Save' }}
+    </button>
+
+    <br>
+
+    <div fxFlex="50" fxLayout="column">
+
+      <button *ngIf="heroe.id"
+              mat-raised-button
+              color="warn"
+              (click)="deleteHeroe()">
+            <mat-icon>delete</mat-icon>
+          Delete
+    </button>
+    </div>
+
+  </div>
+
+  <div fxFlex="50">
+    <img [src]="heroe | image">
+  </div>
+
+</div>

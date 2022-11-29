@@ -1,0 +1,24 @@
+<h1>Are you sure?</h1>
+<hr>
+<p>
+  You are about to delete {{data.superhero}}
+  <br>
+  <br>
+  <span fxLayoutAlign="center center"> <h3>Continue?</h3>  </span>
+</p>
+
+<div mat-dialog-actions fxLayoutAlign="center center">
+  <button mat-raised-button
+            color="warn"
+            (click)="delete()">
+            <mat-icon >delete_forever</mat-icon>
+          Delete
+  </button>
+
+  <button mat-raised-button
+            color="accent"
+            (click)="cancel()">
+            <mat-icon>cancel</mat-icon>
+          Cancel
+  </button>
+</div>
